@@ -56,6 +56,7 @@ const Navbar: React.FC = () => {
           { name: "home", link: "/" },
           { name: "about", link: "/about" },
           { name: "services", link: "/services" },
+          { name: "github", link: "https://github.com/bpuebla" },
           { name: "contact", link: "mailto:0bautistapuebla@gmail.com" },
         ].map((item) => (
           <li key={item.name}>
