@@ -18,14 +18,15 @@ const glow = keyframes`
 `;
 
 const pageLayout = css`
-  min-height: 100vh;
+  height: 100vh; // change from min-height to height
   display: flex;
   flex-direction: column;
   margin: 0;
   padding: 0;
-  overflow-x: hidden;
+  overflow: hidden; // add this to prevent scroll
   position: relative;
 `;
+
 
 const fadeInUp = keyframes`
   from {
@@ -40,7 +41,7 @@ const fadeInUp = keyframes`
 
 
 const mainContent = css`
-  flex: 1;
+  flex: 1; // this will take remaining space after navbar/footer
   margin: 0;
   padding: 20px;
   background-image: url('/back.jpg');
@@ -54,7 +55,8 @@ const mainContent = css`
   color: #fff5e1;
   width: 100vw;
   box-sizing: border-box;
-  min-height: 100vh;
+  min-height: 0; // add this for proper flex shrinking
+  overflow-y: auto; // add this so content can scroll within main if needed
   position: relative;
   
   
@@ -205,12 +207,55 @@ export const baseContentSection = css`
   @media (max-width: 900px) {
     max-width: 95%;
     padding: 30px 40px;
-    min-height: 50vh;
+    height: auto;
+    min-height: 60vh;
+    overflow: visible; // keep glow animation intact
+    
+    h2 {
+      font-size: 2rem;
+      padding: 0 50px;
+    }
   }
-  
+
   @media (max-width: 600px) {
     padding: 20px 30px;
+    height: auto;
+    min-height: 50vh;
+    overflow: visible;
+    
+    h2 {
+      font-size: 1.8rem;
+      padding: 0;
+    }
+  }
+
+  @media (max-width: 400px) {
+    padding: 15px 20px;
+    margin: 1em auto;
+    max-width: 98%;
     min-height: 40vh;
+    overflow: visible;
+    
+    h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      letter-spacing: 1px;
+    }
+  }
+
+  @media (max-width: 320px) {
+    padding: 10px 15px;
+    margin: 0.5em auto;
+    max-width: 99%;
+    min-height: 35vh;
+    border-width: 1px;
+    overflow: visible;
+    
+    h2 {
+      font-size: 1.3rem;
+      margin-bottom: 0.8rem;
+      letter-spacing: 0.5px;
+    }
   }
 `;
 

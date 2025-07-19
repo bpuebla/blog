@@ -169,6 +169,20 @@ const navbarStyles = css`
       padding: 0.6em 1em;
     }
   }
+
+  @media (max-width: 600px) {
+    padding: 0.5em;
+    
+    .navbar {
+      gap: 1em;
+      flex-wrap: wrap;
+    }
+    
+    .navbar a {
+      font-size: 1em;
+      padding: 0.4em 0.66em;
+    }
+  }
 `;
 
 const Navbar: React.FC = () => {

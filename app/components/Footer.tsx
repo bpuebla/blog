@@ -32,7 +32,7 @@ const footerStyle = css`
   );
   backdrop-filter: blur(12px);
   border-top: 2px ridge rgba(170, 170, 157, 0.4);
-  padding: 2em 0;
+  padding: 1em 0;
   margin: 0;
   display: flex;
   flex-direction: column;
@@ -175,13 +175,13 @@ const footerStyle = css`
 const Footer = () => (
   <footer css={footerStyle}>
     <div className="footer-content">
-      <div className="footer-ornament" />
+      {/* <div className="footer-ornament" /> */}
       <p className="copyright">&copy; 2025 bpuebla. all rights reserved.</p>
-      <div className="footer-dots">
+      {/* <div className="footer-dots">
         <div className="dot" />
         <div className="dot" />
         <div className="dot" />
-      </div>
+      </div> */}
     </div>
   </footer>
 )

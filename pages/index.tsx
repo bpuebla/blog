@@ -157,6 +157,9 @@ const homeContentSection = css`
         letter-spacing: 1px;
       }
     }
+    @media (max-width: 600px) {
+      grid-template-columns: 1fr;
+      }
   }
 `;
 
