@@ -1,3 +1,4 @@
+//index.tsx
 /** @jsxImportSource @emotion/react */
 import React from "react";
 import Link from "next/link";
@@ -24,8 +25,6 @@ const shimmer = keyframes`
 
 const homeContentSection = css`
   ${baseContentSection}
-  text-align: left;
-  animation: ${fadeInUp} 0.8s ease-out;
   
   .intro-section {
     margin-bottom: 1rem;
@@ -36,7 +35,7 @@ const homeContentSection = css`
       font-size: clamp(2.5rem, 5vw, 4rem);
       color: #fff5e1;
       margin-bottom: 1rem;
-      background: linear-gradient(45deg, #fff5e1, #ffcc80, #e0d6c9);
+      background: linear-gradient(45deg, #fff5e1, #a5e2f5, #e0d6c9);
       background-size: 200px 100%;
       background-clip: text;
       -webkit-background-clip: text;
@@ -54,28 +53,6 @@ const homeContentSection = css`
   }
   
   .blogs-section {
-    .blogs-title {
-      font-family: 'EB Garamond', serif;
-      font-size: 2.5rem;
-      color: #fff5e1;
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      margin-bottom: 2rem;
-      text-align: center;
-      position: relative;
-      
-      &::after {
-        content: '';
-        position: absolute;
-        bottom: -10px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 100px;
-        height: 2px;
-        background: linear-gradient(90deg, transparent, #ffcc80, transparent);
-      }
-    }
-
     .blog-list {
       display: grid;
       gap: 1rem;
@@ -195,7 +172,6 @@ const HomePage: React.FC<HomePageProps> = ({ posts }) => {
           <h1 className="site-title">bpuebla</h1>
           <p className="site-subtitle">my page</p>
         </div>
-        
         <div className="blogs-section">
           <h2 className="blogs-title">Library of Thoughts</h2>
           <div className="blog-list">

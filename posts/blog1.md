@@ -1,5 +1,5 @@
 ---
-title: "some pretentious title"
+title: "working on a technical not "
 date: "2025-01-15"
 ---
 

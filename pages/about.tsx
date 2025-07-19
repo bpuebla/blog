@@ -35,7 +35,27 @@ const aboutContentSection = css`
     max-width: 600px;
     text-align: left;
   }
-  
+
+  a {
+    color: #a5e2f5;
+    text-decoration: none;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: #fff5e1;
+    }
+  } 
+`;
+
+const aboutPicture = css`
+  display: block;
+  margin: 0 auto 2rem auto;
+  width: 160px;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid #a5e2f5;
+  box-shadow: 0 0 0 8px #2d2d2d, 0 4px 24px rgba(0,0,0,0.3);
 `;
 
 const AboutPage: React.FC = () => {
@@ -43,31 +63,39 @@ const AboutPage: React.FC = () => {
     <Layout title="bpuebla - about">
       <section css={aboutContentSection}>
         <h2 className="about-title">About</h2>
+        <img
+          src="/yo.jpg"
+          alt="Profile"
+          css={aboutPicture}
+        />
         <div className="about-content">
           <p>
-            software engineer based in madrid. currently working on ML and data @ Xcalibur Smart Mapping. 
-            
-            i build and deploy stuff. 
-          </p>
-          <p>i can help you with:</p>
-            <ul>
-            <li>backend systems with Django, FastAPI, or Gin Gonic</li>
-            <li>devops with Docker and GitHub Actions</li>
-            <li>data pipelines with Airflow, Prefect, Spark, or custom scripts</li>
-            <li>data lakehouses on Databricks</li>
-            <li>ML models with PyTorch or TensorFlow deployed on Django or FastAPI</li>
-            <li>cloud services like AWS, GCP, or Azure</li>
-            <li>databases like Postgres, MySQL, or MongoDB</li>
-            <li>anything related to geospatial</li>
-            <li>can lend a hand with Next.js or React</li>
-            </ul>
-          <p>
-            when not coding i'm probably reading mishima, listening to hypnagogic pop, 
-            or wandering around museums.
-          </p>
-          <p>
-            send me an email at <a href="emailto:0bautistapuebla@gmail.com">0bautistapuebla@gmail.com</a> (with a zero!) or find me on <a href="https://github.com/bpuebla">github</a> and <a href="https://www.linkedin.com/in/bpuebla">linkedin</a>.
-          </p>
+          hi, i'm bautista puebla. 24yo software engineer based in madrid. currently working on ml + data at xcalibur smart mapping.
+          <br />
+          i build and deploy backend-heavy stuff.
+        </p>
+
+        <p>i can help with:</p>
+        <ul>
+          <li>backend systems (django, fastapi, gin gonic)</li>
+          <li>devops (docker, github actions)</li>
+          <li>data pipelines (airflow, prefect, spark, bash if needed)</li>
+          <li>data lakehouses (esp. databricks)</li>
+          <li>ml model serving (pytorch, tf → fastapi/django)</li>
+          <li>cloud infra (aws / gcp / azure)</li>
+          <li>databases (postgres, mysql, mongo)</li>
+          <li>anything geospatial</li>
+          <li>(mild) frontend help with next.js or react</li>
+        </ul>
+
+        <p>
+          when not coding i'm probably reading mishima, listening to hypnagogic pop, or wandering around museums.
+        </p>
+
+        <p>
+          contact me: <a href="mailto:0bautistapuebla@gmail.com">0bautistapuebla@gmail.com</a> (with a zero!) or find me on <a href="https://github.com/bpuebla">github</a> and <a href="https://www.linkedin.com/in/bpuebla">linkedin</a>.
+        </p>
+
         </div>
       </section>
     </Layout>

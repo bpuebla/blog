@@ -1,3 +1,5 @@
+//layout.tsx
+
 /** @jsxImportSource @emotion/react */
 import React from "react";
 import Head from "next/head";
@@ -6,8 +8,8 @@ import Footer from "./Footer";
 import { css, keyframes } from '@emotion/react';
 
 const float = keyframes`
-  0%, 100% { transform: translateY(0px) rotate(0deg); }
-  50% { transform: translateY(-20px) rotate(2deg); }
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(0.5); }
 `;
 
 const glow = keyframes`
@@ -24,6 +26,18 @@ const pageLayout = css`
   overflow-x: hidden;
   position: relative;
 `;
+
+const fadeInUp = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
+
 
 const mainContent = css`
   flex: 1;
@@ -42,6 +56,7 @@ const mainContent = css`
   box-sizing: border-box;
   min-height: 100vh;
   position: relative;
+  
   
   /* Add some atmospheric elements */
   &::before {
@@ -84,14 +99,13 @@ const floatingElements = css`
   .floating-orb {
     position: absolute;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(255, 204, 128, 0.2) 0%, transparent 70%);
+    background: radial-gradient(circle,rgba(165, 226, 245, 0.6), rgba(255, 204, 128, 0.1) 80%);
     animation: ${float} 8s ease-in-out infinite;
-    
     &:nth-child(1) {
       width: 120px;
       height: 120px;
       top: 15%;
-      left: 10%;
+      left: 30%;
       animation-delay: 0s;
     }
     
@@ -99,7 +113,7 @@ const floatingElements = css`
       width: 80px;
       height: 80px;
       top: 70%;
-      right: 15%;
+      right: 30%;
       animation-delay: 2s;
     }
     
@@ -107,8 +121,15 @@ const floatingElements = css`
       width: 60px;
       height: 60px;
       bottom: 20%;
-      left: 20%;
+      left: 22%;
       animation-delay: 4s;
+    }
+    &:nth-child(4) {
+      width: 100px;
+      height: 100px;
+      top: 50%;
+      right: 20%;
+      animation-delay: 6s;
     }
   }
 `;
@@ -117,9 +138,9 @@ export const baseContentSection = css`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 40px 60px;
-  border: 3px solid rgba(170, 170, 157, 0.8);
-  border-radius: 15px;
+  padding: 40px 150px;
+  border: 2px ridge rgba(170, 170, 157, 0.8);
+  border-radius: 5px;
   box-shadow: 
     0 0 50px rgba(0, 0, 0, 0.8),
     inset 0 0 20px rgba(255, 204, 128, 0.1),
@@ -137,7 +158,9 @@ export const baseContentSection = css`
   margin: 2em auto;
   max-width: 90%;
   min-height: 60vh;
-  
+  text-align: left;
+  animation: ${fadeInUp} 0.8s ease-out;
+
   /* Subtle glow effect */
   &::before {
     content: '';
@@ -147,7 +170,7 @@ export const baseContentSection = css`
     right: -2px;
     bottom: -2px;
     background: linear-gradient(45deg, rgba(255, 204, 128, 0.3), rgba(170, 170, 157, 0.3));
-    border-radius: 17px;
+    border-radius: 5px;
     z-index: -1;
     animation: ${glow} 4s ease-in-out infinite;
   }
@@ -161,7 +184,7 @@ export const baseContentSection = css`
       margin-bottom: 2rem;
       text-align: center;
       position: relative;
-      
+      padding: 0 100px;
       &::after {
         content: '';
         position: absolute;
@@ -170,7 +193,7 @@ export const baseContentSection = css`
         transform: translateX(-50%);
         width: 100px;
         height: 2px;
-        background: linear-gradient(90deg, transparent, #ffcc80, transparent);
+        background: linear-gradient(90deg, transparent, #a5e2f5, transparent);
       }
       }
   /* Inner content styling */
@@ -207,6 +230,40 @@ interface LayoutProps {
   title: string;
 }
 
+const orbConfigs = [
+  { width: 120, height: 120, top: '34%', left: '27%', delay: '0s' },
+  { width: 80, height: 80, top: '70%', right: '30%', delay: '2s' },
+  { width: 40, height: 40, bottom: '20%', left: '14%', delay: '4s' },
+  { width: 100, height: 100, top: '50%', right: '20%', delay: '6s' },
+  { width: 30, height: 30, top: '10%', right: '15%', delay: '2s' },
+  { width: 60, height: 60, top: '12%', left: '25%', delay: '3s' },
+  { width: 100, height: 100, top: '10%', right: '20%', delay: '5s' },
+  { width: 90, height: 90, bottom: '40%', left: '21%', delay: '2s' },
+  { width: 60, height: 60, top: '22%', right: '25%', delay: '2s' },
+  { width: 80, height: 80, bottom: '30%', left: '15%', delay: '4s' },
+  { width: 50, height: 50, top: '40%', right: '10%', delay: '6s' },
+  { width: 70, height: 70, bottom: '20%', left: '30%', delay: '3s' },
+  { width: 40, height: 40, top: '50%', right: '25%', delay: '5s' },
+  { width: 30, height: 30, bottom: '10%', left: '20%', delay: '4s' },
+  { width: 50, height: 50, top: '30%', right: '15%', delay: '6s' },
+  { width: 70, height: 70, bottom: '50%', left: '10%', delay: '2s' },
+  { width: 60, height: 60, top: '20%', right: '30%', delay: '3s' },
+  
+  
+];
+
+// Helper to generate inline styles for each orb
+const getOrbStyle = (config: any): React.CSSProperties => ({
+  width: config.width,
+  height: config.height,
+  top: config.top,
+  left: config.left,
+  right: config.right,
+  bottom: config.bottom,
+  animationDelay: config.delay,
+  position: 'absolute' as const,
+});
+
 const Layout: React.FC<LayoutProps> = ({ children, title }) => {
   return (
     <div css={pageLayout}>
@@ -216,9 +273,13 @@ const Layout: React.FC<LayoutProps> = ({ children, title }) => {
       <Navbar />
       <main css={mainContent}>
         <div css={floatingElements}>
-          <div className="floating-orb"></div>
-          <div className="floating-orb"></div>
-          <div className="floating-orb"></div>
+          {orbConfigs.map((config, idx) => (
+            <div
+              key={idx}
+              className="floating-orb"
+              style={getOrbStyle(config)}
+            />
+          ))}
         </div>
         <div css={contentWrapper}>
           {children}

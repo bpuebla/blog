@@ -29,4 +29,14 @@ export const globalStyles = css`
     width: 100% !important;
     min-height: 100vh !important;
   }
+  
+  a {
+    color: #ffcc80;
+    text-decoration: none;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: #fff5e1;
+    }
+  } 
 `;
