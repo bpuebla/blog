@@ -116,7 +116,7 @@ const floatingElements = css`
 export const baseContentSection = css`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
   padding: 40px 60px;
   border: 3px solid rgba(170, 170, 157, 0.8);
   border-radius: 15px;
@@ -152,6 +152,27 @@ export const baseContentSection = css`
     animation: ${glow} 4s ease-in-out infinite;
   }
   
+  h2 {
+      font-family: 'EB Garamond', serif;
+      font-size: 2.5rem;
+      color: #fff5e1;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 2rem;
+      text-align: center;
+      position: relative;
+      
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100px;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, #ffcc80, transparent);
+      }
+      }
   /* Inner content styling */
   & > * {
     position: relative;

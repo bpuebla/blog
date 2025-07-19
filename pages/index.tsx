@@ -28,7 +28,7 @@ const homeContentSection = css`
   animation: ${fadeInUp} 0.8s ease-out;
   
   .intro-section {
-    margin-bottom: 3rem;
+    margin-bottom: 1rem;
     text-align: center;
     
     .site-title {
@@ -193,7 +193,7 @@ const HomePage: React.FC<HomePageProps> = ({ posts }) => {
       <section css={homeContentSection}>
         <div className="intro-section">
           <h1 className="site-title">bpuebla</h1>
-          <p className="site-subtitle">musings from the digital monastery</p>
+          <p className="site-subtitle">my page</p>
         </div>
         
         <div className="blogs-section">
