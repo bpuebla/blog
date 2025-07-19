@@ -273,6 +273,7 @@ const contentWrapper = css`
 interface LayoutProps {
   children: React.ReactNode;
   title: string;
+  description?: string;
 }
 
 const orbConfigs = [
@@ -309,11 +310,12 @@ const getOrbStyle = (config: any): React.CSSProperties => ({
   position: 'absolute' as const,
 });
 
-const Layout: React.FC<LayoutProps> = ({ children, title }) => {
+const Layout: React.FC<LayoutProps> = ({ children, title, description }) => {
   return (
     <div css={pageLayout}>
       <Head>
         <title>{title}</title>
+        <meta name="description" content={description ? description : "i code, i solve problems, i write."} />
       </Head>
       <Navbar />
       <main css={mainContent}>

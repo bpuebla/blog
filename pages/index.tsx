@@ -89,11 +89,11 @@ const homeContentSection = css`
       margin-right: 1rem;
       color: #ffcc80;
       font-weight: bold;
-      min-width: 2rem;
+      min-width: 4rem;
       text-align: center;
       background: rgba(255, 204, 128, 0.2);
-      border-radius: 50%;
-      width: 2rem;
+      border-radius: 10%;
+      width: 5rem;
       height: 2rem;
       display: flex;
       align-items: center;
@@ -159,6 +159,10 @@ const homeContentSection = css`
     }
     @media (max-width: 600px) {
       grid-template-columns: 1fr;
+      .blogs-section {
+        .index-number {
+          font-size: 0.8rem;
+        }
       }
   }
 `;
@@ -169,18 +173,20 @@ interface HomePageProps {
 
 const HomePage: React.FC<HomePageProps> = ({ posts }) => {
   return (
-    <Layout title="bpuebla - home">
+    <Layout title="bpuebla - software engineer" description="notes from a backend-heavy engineer. i build things for people: mostly data, ml, and geospatial stuff. fastapi, spark, docker. madrid-based, remote-ready.">
       <section css={homeContentSection}>
         <div className="intro-section">
           <h1 className="site-title">bpuebla</h1>
-          <p className="site-subtitle">my page</p>
+          <p className="site-subtitle">i code. i solve problems.</p>
         </div>
         <div className="blogs-section">
           <h2 className="blogs-title">Library of Thoughts</h2>
           <div className="blog-list">
             {posts.map((post, index) => (
               <div key={post.id} className="blog-entry">
-                <span className="index-number">{index + 1}</span>
+                <span className="index-number">
+                  {post.date ? new Date(post.date).toLocaleDateString() : 'No date'}
+                </span>
                 <Link href={`/posts/${post.id}`} className="blog-link">
                   {post.title}
                 </Link>
