@@ -1,4 +1,3 @@
-//index.tsx
 /** @jsxImportSource @emotion/react */
 import React from "react";
 import Link from "next/link";
@@ -89,7 +88,7 @@ const homeContentSection = css`
       margin-right: 1rem;
       color: #ffcc80;
       font-weight: bold;
-      min-width: 4rem;
+      min-width: 8rem;
       text-align: center;
       background: rgba(255, 204, 128, 0.2);
       border-radius: 10%;
@@ -173,11 +172,11 @@ interface HomePageProps {
 
 const HomePage: React.FC<HomePageProps> = ({ posts }) => {
   return (
-    <Layout title="bpuebla - software engineer" description="notes from a backend-heavy engineer. i build things for people: mostly data, ml, and geospatial stuff. fastapi, spark, docker. madrid-based, remote-ready.">
+    <Layout title="bpuebla - software engineer" description="notes from a software engineer. i build things for people: mostly data, ml, and geospatial stuff. fastapi, spark, docker. madrid-based, remote-ready.">
       <section css={homeContentSection}>
         <div className="intro-section">
           <h1 className="site-title">bpuebla</h1>
-          <p className="site-subtitle">i code. i solve problems.</p>
+          <p className="site-subtitle">thoughts from a software engineer</p>
         </div>
         <div className="blogs-section">
           <h2 className="blogs-title">Library of Thoughts</h2>
@@ -185,7 +184,13 @@ const HomePage: React.FC<HomePageProps> = ({ posts }) => {
             {posts.map((post, index) => (
               <div key={post.id} className="blog-entry">
                 <span className="index-number">
-                  {post.date ? new Date(post.date).toLocaleDateString() : 'No date'}
+                  {post.date
+                    ? new Date(post.date).toLocaleDateString('en-GB', {
+                        day: '2-digit',
+                        month: '2-digit',
+                        year: 'numeric'
+                      })
+                    : 'No date'}
                 </span>
                 <Link href={`/posts/${post.id}`} className="blog-link">
                   {post.title}
