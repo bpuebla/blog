@@ -139,7 +139,7 @@ const floatingElements = css`
 export const baseContentSection = css`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: start;
   padding: 40px 150px;
   border: 2px ridge rgba(170, 170, 157, 0.8);
   border-radius: 5px;
@@ -198,6 +198,16 @@ export const baseContentSection = css`
         background: linear-gradient(90deg, transparent, #a5e2f5, transparent);
       }
       }
+
+  a {
+    color: #a5e2f5;
+    text-decoration: none;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: #fff5e1;
+    }
+  } 
   /* Inner content styling */
   & > * {
     position: relative;

@@ -20,7 +20,10 @@ const fadeInUp = keyframes`
 const postContentSection = css`
   ${baseContentSection}
   animation: ${fadeInUp} 0.8s ease-out;
-  
+  display: flex;
+  flex-direction: column;
+  min-height: 80vh; // ensures enough height for bottom alignment
+
   .post-header {
     text-align: center;
     margin-bottom: 3rem;
@@ -152,13 +155,14 @@ const postContentSection = css`
     transition: all 0.3s ease;
     font-family: 'EB Garamond', serif;
     font-size: 1.1rem;
-    
+    margin-top: auto; // pushes to bottom
+
     &:hover {
       background: rgba(255, 204, 128, 0.2);
       transform: translateX(-5px);
       box-shadow: 0 4px 20px rgba(255, 204, 128, 0.2);
     }
-    
+
     &::before {
       content: '← ';
       margin-right: 0.5rem;

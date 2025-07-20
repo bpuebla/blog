@@ -1,4 +1,6 @@
 /** @jsxImportSource @emotion/react */
+import Next from "next";
+import Image from "next/image";
 import React from "react";
 import { css } from '@emotion/react';
 import Layout, { baseContentSection } from "../app/components/Layout";
@@ -36,20 +38,11 @@ const aboutContentSection = css`
     text-align: left;
   }
 
-  a {
-    color: #a5e2f5;
-    text-decoration: none;
-    transition: color 0.3s ease;
-
-    &:hover {
-      color: #fff5e1;
-    }
-  } 
 `;
 
 const aboutPicture = css`
   display: block;
-  margin: 0 auto 2rem auto;
+  margin: 1rem auto 2rem auto;
   width: 160px;
   height: 160px;
   object-fit: cover;
@@ -63,9 +56,11 @@ const AboutPage: React.FC = () => {
     <Layout title="bpuebla - about">
       <section css={aboutContentSection}>
         <h2 className="about-title">About</h2>
-        <img
+        <Image
           src="/yo.jpg"
           alt="Profile"
+          width={160}
+          height={160}
           css={aboutPicture}
         />
         <div className="about-content">
