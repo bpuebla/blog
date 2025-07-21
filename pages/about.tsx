@@ -53,7 +53,7 @@ const aboutPicture = css`
 
 const AboutPage: React.FC = () => {
   return (
-    <Layout title="bpuebla - about">
+    <Layout title="bpuebla - about" description="about bpuebla, a software engineer specializing in backend, data, and devops solutions.">
       <section css={aboutContentSection}>
         <h2 className="about-title">About</h2>
         <Image

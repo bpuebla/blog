@@ -39,3 +39,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+.gitmodules
+
+# ignore all posts data
+/posts
+/public/_post-assets

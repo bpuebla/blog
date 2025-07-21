@@ -156,13 +156,29 @@ const homeContentSection = css`
         letter-spacing: 1px;
       }
     }
-    @media (max-width: 600px) {
+  }
+  @media (max-width: 700px) {
+    .stats-section {
       grid-template-columns: 1fr;
-      .blogs-section {
-        .index-number {
-          font-size: 0.8rem;
-        }
+    }
+  }
+
+  @media (max-width: 600px) {
+    .blogs-section {
+      .index-number {
+        font-size: 0.8rem;
+        min-width: 4rem;
+        width: 3rem;
       }
+      
+      .blog-link {
+        font-size: 1rem;
+      }
+      
+      .blog-entry {
+        font-size: 1rem;
+      }
+    }
   }
 `;
 
@@ -172,7 +188,7 @@ interface HomePageProps {
 
 const HomePage: React.FC<HomePageProps> = ({ posts }) => {
   return (
-    <Layout title="bpuebla - software engineer" description="notes from a software engineer. i build things for people: mostly data, ml, and geospatial stuff. fastapi, spark, docker. madrid-based, remote-ready.">
+    <Layout title="bpuebla - software engineer" description="thoughts from a software engineer. i build things: mostly data, ml, and geospatial stuff. fastapi, spark, docker. based in madrid.">
       <section css={homeContentSection}>
         <div className="intro-section">
           <h1 className="site-title">bpuebla</h1>

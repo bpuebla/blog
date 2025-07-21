@@ -37,7 +37,7 @@ const freelanceContentSection = css`
 
 const FreelancePage: React.FC = () => {
   return (
-    <Layout title="bpuebla - freelance">
+    <Layout title="bpuebla - freelance" description="freelance work by bpuebla, specializing in backend, data, and devops solutions.">
       <section css={freelanceContentSection}>
         <h2 className="freelance-title">Freelance</h2>
         <div className="freelance-content">
