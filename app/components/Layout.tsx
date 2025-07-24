@@ -1,8 +1,7 @@
-//layout.tsx
-
 /** @jsxImportSource @emotion/react */
 import React from "react";
 import Head from "next/head";
+import Image from "next/image";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
 import { css, keyframes } from '@emotion/react';
@@ -18,15 +17,14 @@ const glow = keyframes`
 `;
 
 const pageLayout = css`
-  height: 100vh; // change from min-height to height
+  height: 100vh;
   display: flex;
   flex-direction: column;
   margin: 0;
   padding: 0;
-  overflow: hidden; // add this to prevent scroll
+  overflow: hidden;
   position: relative;
 `;
-
 
 const fadeInUp = keyframes`
   from {
@@ -39,28 +37,31 @@ const fadeInUp = keyframes`
   }
 `;
 
+// New background container for better next/image integration
+const backgroundContainer = css`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+`;
 
 const mainContent = css`
-  flex: 1; // this will take remaining space after navbar/footer
+  flex: 1;
   margin: 0;
   padding: 20px;
-  background-image: url('/back.jpg');
-  background-attachment: fixed;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
   align-items: center;
   color: #fff5e1;
   width: 100vw;
   box-sizing: border-box;
-  min-height: 0; // add this for proper flex shrinking
-  overflow-y: auto; // add this so content can scroll within main if needed
+  min-height: 0;
+  overflow-y: auto;
   position: relative;
   
-  
-  /* Add some atmospheric elements */
+  /* atmospheric elements */
   &::before {
     content: '';
     position: fixed;
@@ -163,7 +164,6 @@ export const baseContentSection = css`
   text-align: left;
   animation: ${fadeInUp} 0.8s ease-out;
 
-  /* Subtle glow effect */
   &::before {
     content: '';
     position: absolute;
@@ -208,7 +208,7 @@ export const baseContentSection = css`
       color: #fff5e1;
     }
   } 
-  /* Inner content styling */
+
   & > * {
     position: relative;
     z-index: 1;
@@ -219,7 +219,7 @@ export const baseContentSection = css`
     padding: 30px 40px;
     height: auto;
     min-height: 60vh;
-    overflow: visible; // keep glow animation intact
+    overflow: visible;
     
     h2 {
       font-size: 2rem;
@@ -304,11 +304,8 @@ const orbConfigs = [
   { width: 50, height: 50, top: '30%', right: '15%', delay: '6s' },
   { width: 70, height: 70, bottom: '50%', left: '10%', delay: '2s' },
   { width: 60, height: 60, top: '20%', right: '30%', delay: '3s' },
-  
-  
 ];
 
-// Helper to generate inline styles for each orb
 const getOrbStyle = (config: any): React.CSSProperties => ({
   width: config.width,
   height: config.height,
@@ -327,9 +324,28 @@ const Layout: React.FC<LayoutProps> = ({ children, title, description }) => {
         <title>{title}</title>
         <meta name="description" content={description ? description : "i code, i solve problems, i write."} />
       </Head>
+      
+      {/* optimized background with next/image */}
+      <div css={backgroundContainer}>
+        <Image
+          src="/back.jpg"
+          alt="background"
+          fill
+          style={{
+            objectFit: 'cover',
+            objectPosition: 'center',
+          }}
+          priority
+          quality={85}
+          sizes="100vw"
+          placeholder="blur"
+          blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWGRkqGx0f/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R7Doi2A1A7z7mbO5WMuN2dRh7sAZB9fCGxbq26Vt2TNcatKw8yGZaYn3F8/Rj+bsO3VJtT2Sxp5qMZNeVwMNE//2Q=="
+        />
+      </div>
+      
       <Navbar />
       <main css={mainContent}>
-        <div css={floatingElements}>
+        {/* <div css={floatingElements}>
           {orbConfigs.map((config, idx) => (
             <div
               key={idx}
@@ -337,7 +353,7 @@ const Layout: React.FC<LayoutProps> = ({ children, title, description }) => {
               style={getOrbStyle(config)}
             />
           ))}
-        </div>
+        </div> */}
         <div css={contentWrapper}>
           {children}
         </div>
