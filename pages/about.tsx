@@ -4,6 +4,7 @@ import Image from "next/image";
 import React from "react";
 import { css } from '@emotion/react';
 import Layout, { baseContentSection } from "../app/components/Layout";
+import Link from 'next/link';
 
 const aboutContentSection = css`
   ${baseContentSection}
@@ -65,30 +66,18 @@ const AboutPage: React.FC = () => {
         />
         <div className="about-content">
           <p>
-          hi, i'm bautista puebla. 24yo software engineer based in madrid. currently working on ml + data at xcalibur smart mapping.
+          hi visitor, i'm Bautista Puebla, a software engineer based in madrid. currently working on geospatial ml + data at Xcalibur Smart Mapping.
           <br />
-          i build and deploy backend-heavy stuff.
+          i help people build and deploy backend-heavy stuff, see <Link href="/freelance">here</Link>.
+          <br />
+          i am also working on the personal radio station from the future, Mockingbird FM.
         </p>
-
-        <p>i can help with:</p>
-        <ul>
-          <li>backend systems (django, fastapi, gin gonic)</li>
-          <li>devops (docker, github actions)</li>
-          <li>data pipelines (airflow, prefect, spark, bash if needed)</li>
-          <li>data lakehouses (esp. databricks)</li>
-          <li>ml model serving (pytorch, tf → fastapi/django)</li>
-          <li>cloud infra (aws / gcp / azure)</li>
-          <li>databases (postgres, mysql, mongo)</li>
-          <li>anything geospatial</li>
-          <li>(mild) frontend help with next.js or react</li>
-        </ul>
-
         <p>
           when not coding i'm probably reading mishima, listening to hypnagogic pop, or wandering around museums.
         </p>
 
         <p>
-          contact me: <a href="mailto:0bautistapuebla@gmail.com">0bautistapuebla@gmail.com</a> (with a zero!) or find me on <a href="https://github.com/bpuebla">github</a> and <a href="https://www.linkedin.com/in/bpuebla">linkedin</a>.
+          contact me: <a href="mailto:0bautistapuebla@gmail.com">0bautistapuebla@gmail.com</a> (with a zero!) or find me on <a href="https://github.com/bpuebla">github</a>, <a href="https://x.com/0bautistapuebla">x</a> and <a href="https://www.linkedin.com/in/bpuebla">linkedin</a>.
         </p>
 
         </div>
